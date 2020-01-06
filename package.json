@@ -1,0 +1,17 @@
+{
+  "name": "react-hooks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "mido dev -p 9001"
+  },
+  "entry": {
+    "index": "./src/app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mido-construct": "^1.2.4"
+  }
+}
