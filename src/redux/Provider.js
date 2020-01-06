@@ -14,7 +14,5 @@ export default props => {
 
   const [state, dispatch] = React.useReducer(reducer, userState)
 
-  console.log(state)
-
-  return (<Context.Provider value={{ ...state, dispatch }}>{children}</Context.Provider>)
+  return (<Context.Provider value={{ state, dispatch }}>{children}</Context.Provider>)
 }

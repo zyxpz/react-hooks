@@ -1,10 +1,11 @@
 import { React, ReactDom } from 'mido-construct/lib/react/react';
 import './index.less'
 
-import { Provider, Context } from '../redux';
+import { Provider, connect } from '../redux';
 
 const initState = {
-  num: 0
+  num: 0,
+  num2: 1
 }
 
 const reducer = (state, action) => {
@@ -25,31 +26,33 @@ const reducer = (state, action) => {
   }
 }
 
-const View = () => {
-  const {
-    num,
-    dispatch
-  } = React.useContext(Context)
+const View = connect(state => ({ num: state.num, test: state.num2 }))(
+  props => {
+    const {
+      num,
+      dispatch
+    } = props;
 
-  const add = () => {
-    dispatch({
-      type: 'add'
-    })
-  }
+    const add = () => {
+      dispatch({
+        type: 'add'
+      })
+    }
 
-  const reduce = () => {
-    dispatch({
-      type: 'reduce'
-    })
+    const reduce = () => {
+      dispatch({
+        type: 'reduce'
+      })
+    }
+    return (
+      <React.Fragment>
+        <button type="button" onClick={add}>加</button>
+        <span>{num}</span>
+        <button type="button" onClick={reduce}>减</button>
+      </React.Fragment>
+    )
   }
-  return (
-    <React.Fragment>
-      <button type="button" onClick={add}>加</button>
-      <span>{num}</span>
-      <button type="button" onClick={reduce}>减</button>
-    </React.Fragment>
-  )
-}
+)
 
 const App = () => {
 
